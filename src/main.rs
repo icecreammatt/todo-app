@@ -59,5 +59,13 @@ fn main() {
             Ok(_) => println!("todo saved"),
             Err(why) => println!("An error occured: {}", why),
         }
+    } else if action == "complete" {
+        match todo.complete(&item) {
+            None => println!("'{}' is not present in the list", item),
+            Some(_) => match todo.save() {
+                Ok(_) => println!("todo saved"),
+                Err(why) => println!("An error occured {}", why),
+            },
+        }
     }
 }
